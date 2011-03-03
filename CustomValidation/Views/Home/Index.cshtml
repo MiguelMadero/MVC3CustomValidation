@@ -1,14 +1,12 @@
 ﻿@model CustomValidation.Controllers.MyModel
-		   
 @using CustomValidation.Helpers;
-
 @{
 	ViewBag.Title = "Form Validation Test Page";
 }
-
-<script type="text/javascript" src="/Scripts/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="/Scripts/jquery.validate.min.js"></script>
-<script type="text/javascript" src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@section head {
+	<script type="text/javascript" src="/Scripts/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
 
 <h1>Form Validation Test Page</h1>
 
@@ -23,6 +21,9 @@
 	@Html.OutputField(m => m.CustomAttributeWithLabel)
 	@Html.OutputField(m => m.DataTypeAttributeWithLabel)
 	@Html.OutputField(m => m.CustomTypeWithLabel)
+	@Html.OutputField(m => m.MyNestedModel.NestedCustomAttribute)
+	@Html.OutputField(m => m.MyNestedModel.NestedDataTypeAttribute)
+	@Html.OutputField(m => m.MyNestedModel.NestedCustomType)
 @:
 	<input type="submit" value="Submit" />
 }

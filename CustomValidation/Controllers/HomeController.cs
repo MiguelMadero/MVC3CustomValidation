@@ -30,19 +30,18 @@ namespace CustomValidation.Controllers
 
 	public class MyModel
 	{
-		// todo: test nesting
 
 		[Digits]
 		public string DigitsWithCustomAttribute { get; set; }
 		
 		[DataType("Digits")]
-		// todo: test I didn't break other DataTypes
 		public string DigitsWithDataTypeAttribute { get; set; }
 
 		// todo: Fix client-side validation
 		public Digits DigitsAsCustomType { get; set; }
 
 		// Test the other DataTypes still work:
+		
 		[DataType(DataType.EmailAddress)]
 		public string Email { get; set; }
 
@@ -58,5 +57,20 @@ namespace CustomValidation.Controllers
 
 		[DisplayName("Digits 3")]
 		public Digits CustomTypeWithLabel { get; set; }
+
+		// Test nesting:
+		public MyNestedModel MyNestedModel { get; set; }
+
+	}
+
+	public class MyNestedModel
+	{
+		[Digits]
+		public string NestedCustomAttribute { get; set; }
+
+		[DataType("Digits")]
+		public string NestedDataTypeAttribute { get; set; }
+
+		public Digits NestedCustomType { get; set; }
 	}
 }
