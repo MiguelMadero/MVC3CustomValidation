@@ -58,9 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Validation\CustomAttribute\DigitsAttribute.cs" />
     <Compile Include="Validation\CustomType\Digits.cs" />
-    <Compile Include="Validation\CustomDataTypeAttribute\SimpleType.cs" />
+    <Compile Include="Validation\CustomType\SimpleType.cs" />
     <Compile Include="Validation\CustomType\CustomValidatableObjectAdapter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

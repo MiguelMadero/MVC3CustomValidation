@@ -66,3 +66,16 @@ textarea
 {
     display: none;
 }
+
+label 
+{
+    float: left;
+    clear: both;
+    width: 200px;
+}
+
+input[type=submit] 
+{
+    margin-left: 200px;
+    margin-top: 20px;
+}
