@@ -6,15 +6,15 @@ using CustomValidation.Validation.CustomType;
 
 namespace CustomValidation.Controllers
 {
-    public class HomeController : Controller
-    {
-        //
-        // GET: /Home/
+	public class HomeController : Controller
+	{
+		//
+		// GET: /Home/
 		[HttpGet]
-        public ActionResult Index()
-        {
-            return View();
-        }
+		public ActionResult Index()
+		{
+			return View();
+		}
 
 		[HttpPost]
 		public ActionResult Index(MyModel model)
@@ -26,7 +26,7 @@ namespace CustomValidation.Controllers
 			return View(model);
 		}
 
-    }
+	}
 
 	public class MyModel
 	{
@@ -59,6 +59,7 @@ namespace CustomValidation.Controllers
 		public Digits CustomTypeWithLabel { get; set; }
 
 		// Test nesting:
+
 		public MyNestedModel MyNestedModel { get; set; }
 
 	}
