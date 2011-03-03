@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -35,6 +32,11 @@ namespace CustomValidation
 		{
 			AreaRegistration.RegisterAllAreas();
 
+			// Once per app
+			ModelMetadataProviders.Current = new MetadataProvider();
+			DataAnnotationsModelValidatorProvider.RegisterDefaultValidatableObjectAdapterFactory((m,c)=> new CustomValidatableObjectAdapter(m,c));
+
+			// Once per attribute
 			DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(DataTypeAttribute), typeof(DigitsDataTypeAdapter));
 
 			RegisterGlobalFilters(GlobalFilters.Filters);

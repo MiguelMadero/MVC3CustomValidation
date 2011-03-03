@@ -73,6 +73,9 @@ namespace CustomValidation.Controllers
 
 		public override IEnumerable<ModelValidationResult> Validate(object container)
 		{
+			//if (Attribute.CustomDataType != "Digits")
+			//	return base.Validate(container);
+
 			var strValue = container.GetType().GetProperty(Metadata.PropertyName).GetValue(container, null) as string;
 			if (!string.IsNullOrEmpty(strValue) && !Validator.IsMatch(strValue))
 			{
@@ -126,7 +129,7 @@ namespace CustomValidation.Controllers
 	}
 
 	[ModelBinder(typeof(SimpleTypeToStringBinder))]
-	public class SimpleType<T>
+	public class SimpleType<T> : ISimpleType
 		where T : SimpleType<T>
 	{
 		private readonly string _content;
@@ -152,6 +155,8 @@ namespace CustomValidation.Controllers
 			return _content;
 		}
 	}
+
+	public interface ISimpleType{}
 
 	public class SimpleTypeToStringBinder : IModelBinder
 	{
@@ -180,6 +185,7 @@ namespace CustomValidation.Controllers
 		public string DigitsWithCustomAttribute { get; set; }
 
 		// todo: Figure out how to get display name
+		// todo: Fix client-side validation
 		public Digits DigitsAsCustomType { get; set; }
 	}
 }
