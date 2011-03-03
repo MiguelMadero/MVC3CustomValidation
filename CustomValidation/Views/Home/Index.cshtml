@@ -1,0 +1,21 @@
+﻿@model CustomValidation.Controllers.MyModel
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<script type="text/javascript" src="/Scripts/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="/Scripts/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<h2>Index</h2>
+
+@Html.ValidationSummary("Errors")
+
+@using (Html.BeginForm())
+{
+	@Html.LabelFor(m => m.DigitsAsCustomType) @Html.TextBoxFor(m => m.DigitsAsCustomType) @Html.ValidationMessageFor(m => m.DigitsAsCustomType)<br />
+	@Html.LabelFor(m => m.DigitsWithCustomAttribute) @Html.TextBoxFor(m => m.DigitsWithCustomAttribute) @Html.ValidationMessageFor(m => m.DigitsWithCustomAttribute)<br />
+	@Html.LabelFor(m => m.DigitsWithDataTypeAttribute) @Html.TextBoxFor(m => m.DigitsWithDataTypeAttribute) @Html.ValidationMessageFor(m => m.DigitsWithDataTypeAttribute)<br />
+	<input type="submit" value="Submit" />
+}
