@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
-using CustomValidation.Controllers;
+using CustomValidation.Validation.CustomDataTypeAttribute;
+using CustomValidation.Validation.CustomType;
 
 namespace CustomValidation
 {
@@ -32,12 +31,12 @@ namespace CustomValidation
 		{
 			AreaRegistration.RegisterAllAreas();
 
-			// Once per app
-			ModelMetadataProviders.Current = new MetadataProvider();
-			DataAnnotationsModelValidatorProvider.RegisterDefaultValidatableObjectAdapterFactory((m,c)=> new CustomValidatableObjectAdapter(m,c));
+			// Custom Data Type: Once per application
+			MetadataProvider.Register();
+			CustomValidatableObjectAdapter.Register();
 
-			// Once per attribute
-			DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(DataTypeAttribute), typeof(DigitsDataTypeAdapter));
+			// Custom Data Type Attribute: Once per attribute
+			DigitsDataTypeAdapter.Register();
 
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);

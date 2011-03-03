@@ -58,12 +58,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="CustomValidatableObjectAdapter.asax.cs" />
+    <Compile Include="Validation\CustomAttribute\DigitsAttribute.cs" />
+    <Compile Include="Validation\CustomType\Digits.cs" />
+    <Compile Include="Validation\CustomDataTypeAttribute\SimpleType.cs" />
+    <Compile Include="Validation\CustomType\CustomValidatableObjectAdapter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="MetadataProvider.cs" />
+    <Compile Include="Validation\CustomType\MetadataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\CustomDataTypeAttribute\DigitsDataTypeAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
