@@ -49,11 +49,11 @@ namespace CustomValidation.Controllers
 		// Test DisplayName works:
 
 		[Digits]
-		[DisplayName("Digits 2")]
+		[DisplayName("Digits 1")]
 		public string CustomAttributeWithLabel { get; set; }
 
 		[DataType("Digits")]
-		[DisplayName("Digits 1")]
+		[DisplayName("Digits 2")]
 		public string DataTypeAttributeWithLabel { get; set; }
 
 		[DisplayName("Digits 3")]

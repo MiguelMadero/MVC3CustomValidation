@@ -26,9 +26,13 @@ namespace CustomValidation.Validation.CustomType
 				throw new InvalidOperationException("The model wasn't an IValidatableObject");
 			}
 
+			// Get the Metadata from the property being validated and pass that through as the ValidationContext
+			//	this differs from the default within MVC where the ValidationContext is the context
+			//	of the type being validated rather than the property using that type
 			var validationContext = new ValidationContext(validatable, null, null)
 				{
-					DisplayName = Metadata.DisplayName
+					DisplayName = Metadata.DisplayName ?? Metadata.PropertyName,
+					MemberName = Metadata.PropertyName
 				};
 
 			return ConvertResults(validatable.Validate(validationContext));

@@ -31,12 +31,11 @@ namespace CustomValidation
 		{
 			AreaRegistration.RegisterAllAreas();
 
-			// Custom Data Type: Once per application
-			MetadataProvider.Register();
+			// Custom Data Type
 			CustomValidatableObjectAdapter.Register();
 
-			// Custom Data Type Attribute: Once per attribute
-			DigitsDataTypeAdapter.Register();
+			// Custom Data Type Attribute
+			CustomDataTypeAdapter.Register();
 
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);

@@ -43,6 +43,9 @@ textarea
 .field-validation-error
 {
     color: #ff0000;
+    display: block;
+    margin-left: 200px;
+    margin-top: 3px;
 }
 
 .field-validation-valid
