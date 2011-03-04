@@ -32,7 +32,7 @@ namespace CustomValidation
 			AreaRegistration.RegisterAllAreas();
 
 			// Custom Data Type
-			CustomValidatableObjectAdapter.Register();
+            DataAnnotationsModelValidatorProvider.RegisterDefaultValidatableObjectAdapterFactory((m, c) => new CustomValidatableObjectAdapter(m, c));
 
 			// Custom Data Type Attribute
 			CustomDataTypeAdapter.Register();

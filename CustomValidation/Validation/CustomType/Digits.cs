@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
 
 namespace CustomValidation.Validation.CustomType
 {
-	public class Digits : SimpleType<Digits>, IValidatableObject, IClientValidatable
+    [DigitsClientValidation]
+	public class Digits : SimpleType<Digits>, IValidatableObject
 	{
 		private static readonly Regex Validator = new Regex(@"^\d+$");
 		private const string ErrorMessage = @"The {0} field should only contain digits.";
@@ -24,13 +26,21 @@ namespace CustomValidation.Validation.CustomType
 			}
 		}
 
-		public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
-		{
-			yield return new ModelClientValidationRule
-			{
-				ErrorMessage = string.Format(ErrorMessage, metadata.DisplayName ?? metadata.PropertyName),
-				ValidationType = "digits"
-			};
-		}
+        public class DigitsClientValidationAttribute : ValidationAttribute, IClientValidatable
+        {
+            public DigitsClientValidationAttribute()
+            {
+                ErrorMessage = Digits.ErrorMessage;
+            }
+
+            public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
+            {
+                yield return new ModelClientValidationRule
+                {
+                    ErrorMessage = string.Format(ErrorMessage, metadata.DisplayName ?? metadata.PropertyName),
+                    ValidationType = "digits"
+                };
+            }
+        }
 	}
 }
