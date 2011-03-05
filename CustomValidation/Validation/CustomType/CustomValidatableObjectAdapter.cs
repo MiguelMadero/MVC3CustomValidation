@@ -47,8 +47,8 @@ namespace CustomValidation.Validation.CustomType {
             }
 
             // Get the Metadata from the property being validated and pass that through as the ValidationContext
-            //	this differs from the default within MVC where the ValidationContext is the context
-            //	of the type being validated rather than the property using that type
+            //    this differs from the default within MVC where the ValidationContext is the context
+            //    of the type being validated rather than the property using that type
             var validationContext = new ValidationContext(validatable, null, null)
             {
                 DisplayName = Metadata.DisplayName ?? Metadata.PropertyName,
@@ -56,7 +56,7 @@ namespace CustomValidation.Validation.CustomType {
             };
 
             return ConvertResults(validatable.Validate(validationContext));
-		}
+        }
 
         private IEnumerable<ModelValidationResult> ConvertResults(IEnumerable<ValidationResult> results) {
             foreach (ValidationResult result in results) {
