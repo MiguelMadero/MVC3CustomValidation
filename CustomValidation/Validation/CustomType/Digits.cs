@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
@@ -32,6 +31,11 @@ namespace CustomValidation.Validation.CustomType
             {
                 ErrorMessage = Digits.ErrorMessage;
             }
+
+			public override bool IsValid(object value)
+			{
+				return true;
+			}
 
             public IEnumerable<ModelClientValidationRule> GetClientValidationRules(ModelMetadata metadata, ControllerContext context)
             {
