@@ -1,0 +1,1 @@
+﻿For this implementation to work you need to call the Register() method from within Application_Start().
