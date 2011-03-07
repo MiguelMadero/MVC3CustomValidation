@@ -25,6 +25,7 @@ namespace CustomValidation.Validation.CustomType
             }
         }
 
+
         public class DigitsClientValidationAttribute : ValidationAttribute, IClientValidatable
         {
             public DigitsClientValidationAttribute()
